@@ -5,7 +5,7 @@ export const LessonButton = (lesson) => {
   return (
     <div className="list-item">
       <Link to={`/lesson/${lesson.id}`}>
-        <h3>{`${lesson.id}: ${lesson.name}`}</h3>
+        <button>{`${lesson.id}: ${lesson.name}`}</button>
       </Link>
     </div>
   );

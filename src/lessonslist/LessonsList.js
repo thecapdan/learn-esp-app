@@ -9,7 +9,7 @@ export const LessonsList = ({ lessons, isLoading }) => {
         <p>Loading...</p>
       ) : (
         lessons.map((lesson) => (
-          <LessonButton name={lesson.name} id={lesson.id} />
+          <LessonButton name={lesson.name} id={lesson.id} key={lesson.id} />
         ))
       )}
     </div>

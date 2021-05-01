@@ -1,3 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-export const HomePage = () => <h1>Welcome Home Jimbob</h1>;
+export const HomePage = () => {
+  return (
+    <div>
+      <h1>Welcome Home Jimbob</h1>
+      <Link to={`/lessons`}>
+        <button>{"Lessons"}</button>
+      </Link>
+    </div>
+  );
+};

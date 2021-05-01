@@ -4,6 +4,7 @@ import { HomePage } from "./home";
 import { LessonsListPage } from "./lessonslist";
 import { AddLessonPage } from "./addLessons";
 import { LessonPage } from "./lesson";
+import { ExercisePage } from "./exercise";
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
   {
     path: "/lesson/:id",
     Component: LessonPage,
+    exact: true,
+  },
+  {
+    path: "/exercise/:id",
+    Component: ExercisePage,
     exact: true,
   },
 ];
