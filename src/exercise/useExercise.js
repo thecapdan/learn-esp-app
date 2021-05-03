@@ -7,7 +7,7 @@ export const useExercise = () => {
   let id = urlParams.substring(urlParams.lastIndexOf("/") + 1);
 
   const [isLoading, setIsLoading] = useState(true);
-  const [exercise, setExercise] = useState("");
+  const [exercises, setExercise] = useState([]);
 
   const loadingExercise = async () => {
     setIsLoading(true);
@@ -21,5 +21,5 @@ export const useExercise = () => {
     loadingExercise();
   }, []);
 
-  return { isLoading, exercise, setExercise };
+  return { isLoading, exercises, setExercise };
 };
