@@ -8,6 +8,9 @@ export const HomePage = () => {
       <Link to={`/lessons`}>
         <button>{"Lessons"}</button>
       </Link>
+      <Link to={`/update-lesson`}>
+        <button>{"Edit Lesson"}</button>
+      </Link>
     </div>
   );
 };

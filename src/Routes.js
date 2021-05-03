@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { HomePage } from "./home";
 import { LessonsListPage } from "./lessonslist";
 import { AddLessonPage } from "./addLessons";
+import { UpdateLessonPage } from "./updateLesson";
 import { LessonPage } from "./lesson";
 import { ExercisePage } from "./exercise";
 
@@ -20,6 +21,11 @@ const routes = [
   {
     path: "/add-lesson",
     Component: AddLessonPage,
+    exact: true,
+  },
+  {
+    path: "/update-lesson",
+    Component: UpdateLessonPage,
     exact: true,
   },
   {
