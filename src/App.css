@@ -149,3 +149,31 @@ a {
 .shopping-list-button {
   background-color: #ade25d;
 }
+
+.list-item a,
+.list-item a button {
+  width: 100%;
+}
+
+/* nav group */
+.btn-group.special {
+  display: flex;
+}
+
+.special .btn {
+  flex: 1;
+}
+
+.navButton {
+  width: 95%;
+}
+
+/* exercise */
+.game-button {
+  width: 95%;
+  margin: 10px;
+}
+
+.correct {
+  border-color: green;
+}

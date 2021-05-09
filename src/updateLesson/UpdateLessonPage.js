@@ -14,7 +14,7 @@ export const UpdateLessonPage = () => {
   const history = useHistory();
 
   const update = async () => {
-    if ((record == "intro" && intro) || (phraseEng && phraseEsp)) {
+    if ((record === "intro" && intro) || (phraseEng && phraseEsp)) {
       const lessonUpdate = {
         id: lessonId,
         record: record,
@@ -61,7 +61,7 @@ export const UpdateLessonPage = () => {
           })}
         </div>
         <div>
-          {record == "intro" ? (
+          {record === "intro" ? (
             <input
               type="string"
               placeholder="Enter new intro"

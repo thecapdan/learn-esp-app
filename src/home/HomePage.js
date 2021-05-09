@@ -3,14 +3,20 @@ import { Link } from "react-router-dom";
 
 export const HomePage = () => {
   return (
-    <div>
-      <h1>Welcome Home Jimbob</h1>
-      <Link to={`/lessons`}>
-        <button>{"Lessons"}</button>
-      </Link>
-      <Link to={`/update-lesson`}>
-        <button>{"Edit Lesson"}</button>
-      </Link>
+    <div className="page">
+      <div className="centred-container">
+        <h1>Welcome Home Jimbob</h1>
+        <div className="list-item">
+          <Link to={`/lessons`}>
+            <button>{"Lessons"}</button>
+          </Link>
+        </div>
+        <div className="list-item">
+          <Link to={`/update-lesson`}>
+            <button>{"Edit Lesson"}</button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };
