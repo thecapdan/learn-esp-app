@@ -5,7 +5,7 @@ export const HomePage = () => {
   return (
     <div className="page">
       <div className="centred-container">
-        <h1>Welcome Home Jimbob</h1>
+        <h1>Welcome to Pigeon Spanish</h1>
         <div className="list-item">
           <Link to={`/lessons`}>
             <button>{"Lessons"}</button>

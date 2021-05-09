@@ -62,13 +62,13 @@ export const UpdateLessonPage = () => {
         </div>
         <div>
           {record === "intro" ? (
-            <input
+            <textarea
               type="string"
               placeholder="Enter new intro"
               className="full-width"
               value={intro}
               onChange={(e) => setIntro(e.target.value)}
-            ></input>
+            ></textarea>
           ) : (
             <div>
               <input

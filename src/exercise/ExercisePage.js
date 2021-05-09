@@ -53,6 +53,7 @@ export const ExercisePage = () => {
             </div>
             <div className="list-item">
               <input
+                value={userAnswer}
                 className={`full-width ${result}`}
                 onChange={(e) => setUserAnswer(e.target.value)}
               />
