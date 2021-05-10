@@ -177,3 +177,7 @@ a {
 .correct {
   border-color: green;
 }
+
+.incorrect {
+  border-color: #dc3545;
+}

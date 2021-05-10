@@ -8,7 +8,8 @@ export const useLessons = () => {
     setIsLoading(true);
     const response = await fetch("/all-lessons");
     const lessons = await response.json();
-    setLessons(lessons);
+    const sortedLesson = lessons.sort((a, b) => (a.id > b.id ? 1 : -1));
+    setLessons(sortedLesson);
     setIsLoading(false);
   };
 

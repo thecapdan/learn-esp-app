@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BackButton } from "../ui";
 
 import { useExercise } from "./useExercise";
+import { findDifferences } from "../utils";
 
 export const ExercisePage = () => {
   const { exercises, isLoading: isLoadingExercise } = useExercise();
@@ -12,14 +13,25 @@ export const ExercisePage = () => {
 
   const proceed = () => {
     if (inProgress) {
-      // TODO check answer
+      setResult(getInputOutcome());
       setInProgress(false);
     } else {
-      const nextIndex = index + 1 < exercises.length ? index + 1 : 0;
-      setIndex(nextIndex);
-      setUserAnswer("");
-      setInProgress(true);
+      nextPhrase();
+      setResult("pending");
     }
+  };
+
+  const getInputOutcome = () => {
+    return userAnswer.toLowerCase() === exercises[index].esp.toLowerCase()
+      ? "correct"
+      : "incorrect";
+  };
+
+  const nextPhrase = () => {
+    const nextIndex = index + 1 < exercises.length ? index + 1 : 0;
+    setIndex(nextIndex);
+    setUserAnswer("");
+    setInProgress(true);
   };
 
   const getPlaceholder = (str) => {
@@ -29,8 +41,6 @@ export const ExercisePage = () => {
   };
 
   const hint = () => {};
-
-  const skip = () => {};
 
   return (
     <div className="page">
@@ -65,7 +75,11 @@ export const ExercisePage = () => {
           <button onClick={hint} className="game-button">
             {"Hint"}
           </button>
-          <button onClick={skip} className="game-button">
+          <button
+            onClick={nextPhrase}
+            className="game-button"
+            disabled={!inProgress}
+          >
             {"Skip"}
           </button>
           <button onClick={proceed} className="game-button">
