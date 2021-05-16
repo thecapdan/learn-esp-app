@@ -186,3 +186,15 @@ a {
 .incorrect {
   border-color: #dc3545;
 }
+
+/* vocab page */
+.vocab {
+  flex: 1;
+  background-color: #cadfff;
+  border-color: black;
+  border-width: 5px;
+  color: black;
+  width: 95%;
+  margin: 5px;
+  font-size: 20px;
+}

@@ -1,29 +1,25 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-export const useLesson = () => {
+export const useVocab = () => {
   // TODO - retrieve params more gracefully
   let urlParams = useLocation().pathname;
   let id = urlParams.substring(urlParams.lastIndexOf("/") + 1);
 
   const [isLoading, setIsLoading] = useState(true);
-  const [lesson, setLesson] = useState({});
-  const [hasExercise, setHasExercise] = useState(false);
-  const [hasVocab, setHasVocab] = useState(false);
+  const [vocabPairs, setVocabPairs] = useState([]);
 
-  const loadingLesson = async () => {
+  const loadingVocab = async () => {
     setIsLoading(true);
     const response = await fetch(`/lesson/${id}`);
     const lesson = await response.json();
-    setLesson(lesson);
-    setHasExercise(lesson.exercise.length > 0);
-    setHasVocab(lesson.vocabulary.length > 0);
+    setVocabPairs(lesson.vocabulary);
     setIsLoading(false);
   };
 
-  useEffect((args) => {
-    loadingLesson();
+  useEffect(() => {
+    loadingVocab();
   }, []);
 
-  return { isLoading, lesson, hasExercise, hasVocab };
+  return { isLoading, vocabPairs };
 };

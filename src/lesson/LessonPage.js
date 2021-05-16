@@ -4,7 +4,7 @@ import { BackButton, NavButton } from "../ui";
 import ReactMarkdown from "react-markdown";
 
 export const LessonPage = () => {
-  const { lesson, isLoading, hasExercise } = useLesson();
+  const { lesson, isLoading, hasExercise, hasVocab } = useLesson();
 
   return (
     <div className="page">
@@ -17,7 +17,11 @@ export const LessonPage = () => {
           <div className="lesson-page-button-wrapper">
             <div className="btn-group special" role="group">
               <NavButton link="/" name="Home" />
-              <NavButton link={`/vocabulary/${lesson.id}`} name="Vocabulary" />
+              <NavButton
+                link={`/vocab/${lesson.id}`}
+                disabled={!hasVocab}
+                name="Vocabulary"
+              />
               <NavButton
                 link={`/exercise/${lesson.id}`}
                 disabled={!hasExercise}

@@ -6,6 +6,7 @@ import { AddLessonPage } from "./addLessons";
 import { UpdateLessonPage } from "./updateLesson";
 import { LessonPage } from "./lesson";
 import { ExercisePage } from "./exercise";
+import { VocabPage } from "./vocab";
 
 const routes = [
   {
@@ -31,6 +32,11 @@ const routes = [
   {
     path: "/lesson/:id",
     Component: LessonPage,
+    exact: true,
+  },
+  {
+    path: "/vocab/:id",
+    Component: VocabPage,
     exact: true,
   },
   {
