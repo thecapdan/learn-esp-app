@@ -168,6 +168,11 @@ a {
   width: 95%;
 }
 
+.navButton:disabled {
+  background-color: #a8b8d0;
+  cursor: not-allowed;
+}
+
 /* exercise */
 .game-button {
   width: 95%;

@@ -8,12 +8,14 @@ export const useLesson = () => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [lesson, setLesson] = useState({});
+  const [hasExercise, setHasExercise] = useState(false);
 
   const loadingLesson = async () => {
     setIsLoading(true);
     const response = await fetch(`/lesson/${id}`);
     const lesson = await response.json();
     setLesson(lesson);
+    setHasExercise(lesson.exercise.length > 0);
     setIsLoading(false);
   };
 
@@ -21,5 +23,5 @@ export const useLesson = () => {
     loadingLesson();
   }, []);
 
-  return { isLoading, lesson, setLesson };
+  return { isLoading, lesson, hasExercise };
 };
