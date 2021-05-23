@@ -1,19 +1,18 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 
 import { BackButton, Dropdown, RadioButton } from "../ui";
 
 const recordOptions = ["exercise", "vocabulary", "intro"];
 
 export const UpdateLessonPage = () => {
-  const [lessonId, setLessonNumber] = useState(1);
+  const [lessonId, setLessonNumber] = useState(0);
   const [record, setRecord] = useState(recordOptions[0]);
   const [intro, setIntro] = useState("");
   const [phraseEng, setPhraseEng] = useState("");
   const [phraseEsp, setPhraseEsp] = useState("");
-  const history = useHistory();
 
   const update = async () => {
+    let message = "Please update required fields";
     if ((record === "intro" && intro) || (phraseEng && phraseEsp)) {
       const lessonUpdate = {
         id: lessonId,
@@ -24,17 +23,19 @@ export const UpdateLessonPage = () => {
           esp: phraseEsp,
         },
       };
-      await fetch("/update-lesson", {
+      const response = await fetch("/update-lesson", {
         method: "post",
         body: JSON.stringify(lessonUpdate),
         headers: {
           "Content-Type": "application/json",
         },
       });
-      history.push("/");
-    } else {
-      alert("Please update required fields");
+      message =
+        response.status === 200
+          ? "Record successfully added"
+          : "Failed to update. Server error";
     }
+    alert(message);
   };
 
   return (
@@ -46,7 +47,7 @@ export const UpdateLessonPage = () => {
         <Dropdown
           className="full-width"
           onChange={(e) => setLessonNumber(e.target.value)}
-          options={[1, 2]}
+          options={[0, 1, 2, 3, 4]}
         />
         <div className="radio-container">
           {recordOptions.map((recordOption, index) => {

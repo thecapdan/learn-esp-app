@@ -198,10 +198,12 @@ a {
   margin: 5px;
   font-size: 20px;
 }
+.delete {
+  flex: 0.2;
+}
 
 /* Lesson Page */
 
-/* Default Table Style */
 table {
   color: #333;
   background: white;

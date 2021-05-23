@@ -11,6 +11,16 @@ export const VocabPage = () => {
     setShowTranslation(!showTranslation);
   };
 
+  const deleteRecord = async (id) => {
+    const response = await fetch(`/delete-record/4/vocabulary?recordId=${id}`);
+    if (response.status != 200) {
+      console.error(response);
+    } else {
+      alert("Record removed.");
+      window.location.reload();
+    }
+  };
+
   return (
     <div className="page">
       <BackButton />
@@ -23,9 +33,16 @@ export const VocabPage = () => {
             <button className="vocab" onClick={toggleShowHide}>
               {showTranslation ? "Hide All" : "Show All"}{" "}
             </button>
+            <button className="vocab delete"></button>
           </div>
           {vocabPairs.map((pair) => (
-            <VocabPair eng={pair.eng} esp={pair.esp} show={showTranslation} />
+            <VocabPair
+              eng={pair.eng}
+              esp={pair.esp}
+              id={pair._id}
+              delete={deleteRecord}
+              show={showTranslation}
+            />
           ))}
         </div>
       )}
