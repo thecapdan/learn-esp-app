@@ -18,9 +18,13 @@ export const VocabPair = (props) => {
       <button className="vocab" onClick={hideShowToggle}>
         {props.show || showTranslation ? props.esp : "show"}
       </button>
-      <button className="vocab delete" onClick={deletePair}>
-        {"X"}
-      </button>
+      {props.edit ? (
+        <button className="vocab rowButton" onClick={deletePair}>
+          {"X"}
+        </button>
+      ) : (
+        <button className="vocab rowButton"></button>
+      )}
     </div>
   );
 };

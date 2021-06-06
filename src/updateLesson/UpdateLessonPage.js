@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 
 import { BackButton, Dropdown, RadioButton } from "../ui";
+import {
+  updateLessonIntro,
+  updateLessonExercise,
+  updateLessonVocababulary,
+} from "./updateLesson";
 
 const recordOptions = ["exercise", "vocabulary", "intro"];
 
@@ -12,30 +17,13 @@ export const UpdateLessonPage = () => {
   const [phraseEsp, setPhraseEsp] = useState("");
 
   const update = async () => {
-    let message = "Please update required fields";
-    if ((record === "intro" && intro) || (phraseEng && phraseEsp)) {
-      const lessonUpdate = {
-        id: lessonId,
-        record: record,
-        intro: intro,
-        phrase: {
-          eng: phraseEng,
-          esp: phraseEsp,
-        },
-      };
-      const response = await fetch("/update-lesson", {
-        method: "post",
-        body: JSON.stringify(lessonUpdate),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      message =
-        response.status === 200
-          ? "Record successfully added"
-          : "Failed to update. Server error";
+    if (record === "intro") {
+      updateLessonIntro(lessonId, intro);
+    } else if (record === "vocabulary") {
+      updateLessonVocababulary(lessonId, phraseEng, phraseEsp);
+    } else {
+      updateLessonExercise(lessonId, phraseEng, phraseEsp);
     }
-    alert(message);
   };
 
   return (
