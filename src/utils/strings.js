@@ -1,13 +1,15 @@
-const stripSpecialCharacter = (str) => {
-  return str.replace(/[^a-zA-Záéíóñ ]/g, "");
+const replaceSpecialCharacters = (str) => {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 };
 
-export const findDifferences = (input, expected, isStrict = false) => {
-  input = stripSpecialCharacter(input);
-  expected = stripSpecialCharacter(expected);
+export const findDifferences = (input, expected, strictMode = false) => {
+  if (!strictMode) {
+    input = replaceSpecialCharacters(input);
+    expected = replaceSpecialCharacters(expected);
+  }
   let diffs = [];
   expected.split(" ").forEach(function (expectedWord, i) {
-    let inputWord = input.split(" ")[i];
+    const inputWord = input.split(" ")[i];
     if (expectedWord !== inputWord) {
       diffs.push(expectedWord);
     }

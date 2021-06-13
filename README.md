@@ -1,8 +1,12 @@
 # learn-esp-client
 
-Client side for simple language learning app.
+Personal project.
 
-Work in progress...
+Client side for a simple language learning app using ReactJS.
+
+The server side can be found [here](https://github.com/thecapdan/learn-esp-server)
+
+This is a work in progress(!)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
